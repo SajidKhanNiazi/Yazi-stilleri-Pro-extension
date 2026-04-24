@@ -1,0 +1,26 @@
+{
+  "name": "yazi-stilleri-pro-extension",
+  "version": "1.0.0",
+  "description": "Şekilli Yazı Oluşturucu. Generate 50+ fancy text styles instantly. Perfect for social media bios, nicknames, and creative messaging.",
+  "main": "popup.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SajidKhanNiazi/Yazi-stilleri-Pro-extension.git"
+  },
+  "keywords": [
+    "yazi-stilleri",
+    "fancy-text",
+    "unicode-generator",
+    "instagram-fonts",
+    "whatsapp-styles",
+    "sekilli-yazi",
+    "chrome-extension",
+    "text-styler"
+  ],
+  "author": "Sajid Khan Niazi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SajidKhanNiazi/Yazi-stilleri-Pro-extension/issues"
+  },
+  "homepage": "https://yazı-stilleripro.com.tr/"
+}

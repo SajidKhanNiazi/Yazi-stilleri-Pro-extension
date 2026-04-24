@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fancy Text Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="ftg-header">
+    <div class="ftg-header-left">
+      <img src="icons/icon-48.png" alt="" class="ftg-logo" width="28" height="28" />
+      <h1 class="ftg-title">Fancy Text</h1>
+    </div>
+    <button id="ftg-theme-toggle" class="ftg-theme-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="ftg-theme-icon">🌙</span>
+    </button>
+  </header>
+
+  <!-- ===== INPUT AREA ===== -->
+  <section class="ftg-input-area">
+    <div class="ftg-input-wrapper">
+      <span class="ftg-input-icon">✏️</span>
+      <input id="ftg-text-input" type="text" placeholder="Type your text here..." autocomplete="off" spellcheck="false" />
+      <button id="ftg-clear-btn" class="ftg-clear-btn" type="button" aria-label="Clear input" title="Clear text">✕</button>
+    </div>
+    <div class="ftg-search-wrapper">
+      <span class="ftg-input-icon">🔍</span>
+      <input id="ftg-search-input" type="text" placeholder="Search styles..." autocomplete="off" spellcheck="false" />
+    </div>
+  </section>
+
+  <!-- ===== TABS ===== -->
+  <nav class="ftg-tabs" role="tablist">
+    <button class="ftg-tab active" data-tab="all" role="tab" aria-selected="true">All</button>
+    <button class="ftg-tab" data-tab="favorites" role="tab" aria-selected="false">⭐ Favorites</button>
+    <button class="ftg-tab" data-tab="history" role="tab" aria-selected="false">🕐 History</button>
+  </nav>
+
+  <!-- ===== CATEGORY FILTERS ===== -->
+  <div id="ftg-filters" class="ftg-filters">
+    <button class="ftg-chip active" data-category="all">All</button>
+    <button class="ftg-chip" data-category="basic">🔤 Basic</button>
+    <button class="ftg-chip" data-category="unicode">🅰️ Unicode</button>
+    <button class="ftg-chip" data-category="decorative">✨ Decorative</button>
+    <button class="ftg-chip" data-category="symbol">🔣 Symbol</button>
+    <button class="ftg-chip" data-category="special">🎯 Special</button>
+  </div>
+
+  <!-- ===== RESULTS ===== -->
+  <main id="ftg-results" class="ftg-results" role="region" aria-live="polite" aria-label="Generated text styles">
+    <!-- Style cards rendered here -->
+  </main>
+
+  <!-- ===== COPY ALL ===== -->
+  <div id="ftg-copy-all-wrap" class="ftg-copy-all-wrap" style="display:none;">
+    <button id="ftg-copy-all" class="ftg-copy-all-btn" type="button">📋 Copy All Styles</button>
+  </div>
+
+  <!-- ===== HISTORY TAB CONTENT ===== -->
+  <div id="ftg-history-panel" class="ftg-panel" style="display:none;">
+    <div class="ftg-panel-header">
+      <span>Recently Copied</span>
+      <button id="ftg-clear-history" class="ftg-link-btn" type="button">Clear All</button>
+    </div>
+    <div id="ftg-history-list" class="ftg-history-list">
+      <p class="ftg-empty">No copy history yet.</p>
+    </div>
+  </div>
+
+  <!-- ===== FAVORITES TAB CONTENT ===== -->
+  <div id="ftg-favorites-panel" class="ftg-panel" style="display:none;"></div>
+
+  <!-- ===== VIRAL SECTION ===== -->
+  <section class="ftg-viral-section">
+    <button id="ftg-viral-toggle" class="ftg-viral-toggle" type="button">
+      <span>🚀 More Tools</span>
+      <span class="ftg-chevron">▾</span>
+    </button>
+    <div id="ftg-viral-content" class="ftg-viral-content" style="display:none;">
+      <button class="ftg-viral-card" data-tool="bio" type="button">
+        <span class="ftg-viral-icon">📝</span>
+        <div>
+          <strong>Bio Generator</strong>
+          <small>Create stylish social media bios</small>
+        </div>
+      </button>
+      <button class="ftg-viral-card" data-tool="nickname" type="button">
+        <span class="ftg-viral-icon">🎭</span>
+        <div>
+          <strong>Nickname Generator</strong>
+          <small>Generate unique gaming nicknames</small>
+        </div>
+      </button>
+      <button class="ftg-viral-card" data-tool="emoji" type="button">
+        <span class="ftg-viral-icon">😎</span>
+        <div>
+          <strong>Emoji + Text Combiner</strong>
+          <small>Mix emojis into your text</small>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== BIO GENERATOR MODAL ===== -->
+  <div id="ftg-modal-bio" class="ftg-modal" style="display:none;">
+    <div class="ftg-modal-content">
+      <div class="ftg-modal-header">
+        <h2>📝 Bio Generator</h2>
+        <button class="ftg-modal-close" data-close="bio" type="button">✕</button>
+      </div>
+      <div class="ftg-modal-body">
+        <input id="ftg-bio-name" type="text" placeholder="Your name" class="ftg-modal-input" />
+        <input id="ftg-bio-profession" type="text" placeholder="Profession / title" class="ftg-modal-input" />
+        <input id="ftg-bio-hobby" type="text" placeholder="Hobby / interest" class="ftg-modal-input" />
+        <button id="ftg-bio-generate" class="ftg-modal-btn" type="button">✨ Generate Bios</button>
+        <div id="ftg-bio-results" class="ftg-modal-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NICKNAME GENERATOR MODAL ===== -->
+  <div id="ftg-modal-nickname" class="ftg-modal" style="display:none;">
+    <div class="ftg-modal-content">
+      <div class="ftg-modal-header">
+        <h2>🎭 Nickname Generator</h2>
+        <button class="ftg-modal-close" data-close="nickname" type="button">✕</button>
+      </div>
+      <div class="ftg-modal-body">
+        <input id="ftg-nick-name" type="text" placeholder="Enter a name or word" class="ftg-modal-input" />
+        <button id="ftg-nick-generate" class="ftg-modal-btn" type="button">🎲 Generate Nicknames</button>
+        <div id="ftg-nick-results" class="ftg-modal-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EMOJI COMBINER MODAL ===== -->
+  <div id="ftg-modal-emoji" class="ftg-modal" style="display:none;">
+    <div class="ftg-modal-content">
+      <div class="ftg-modal-header">
+        <h2>😎 Emoji + Text Combiner</h2>
+        <button class="ftg-modal-close" data-close="emoji" type="button">✕</button>
+      </div>
+      <div class="ftg-modal-body">
+        <input id="ftg-emoji-text" type="text" placeholder="Type your text" class="ftg-modal-input" />
+        <div class="ftg-emoji-picker">
+          <span class="ftg-emoji-opt" data-emoji="⭐">⭐</span>
+          <span class="ftg-emoji-opt" data-emoji="🔥">🔥</span>
+          <span class="ftg-emoji-opt" data-emoji="💖">💖</span>
+          <span class="ftg-emoji-opt" data-emoji="✨">✨</span>
+          <span class="ftg-emoji-opt" data-emoji="🎯">🎯</span>
+          <span class="ftg-emoji-opt" data-emoji="💎">💎</span>
+          <span class="ftg-emoji-opt" data-emoji="🌟">🌟</span>
+          <span class="ftg-emoji-opt" data-emoji="⚡">⚡</span>
+          <span class="ftg-emoji-opt" data-emoji="🦋">🦋</span>
+          <span class="ftg-emoji-opt" data-emoji="🌺">🌺</span>
+          <span class="ftg-emoji-opt" data-emoji="🍀">🍀</span>
+          <span class="ftg-emoji-opt" data-emoji="💫">💫</span>
+        </div>
+        <div id="ftg-emoji-results" class="ftg-modal-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="ftg-footer">
+    <a id="ftg-open-site" href="https://yazı-stilleripro.com.tr/" target="_blank" rel="noopener noreferrer" class="ftg-open-link">
+      🌐 Open Full Tool — yazı-stilleripro.com.tr
+    </a>
+    <small class="ftg-copyright">© 2026 Yazi Stilleri Pro</small>
+  </footer>
+
+  <!-- ===== TOAST ===== -->
+  <div id="ftg-toast" class="ftg-toast" aria-live="assertive"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

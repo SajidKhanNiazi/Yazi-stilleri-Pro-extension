@@ -1,0 +1,20 @@
+# Local development
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Build files
+*.zip
+dist/
+out/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.local
